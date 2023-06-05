@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section>
+      <div class="search-box">
+        <input id="input" placeholder="search the city name ..." type="text" spellcheck="false" />
+        <button id="button">Search</button>
+        <h1 id="name">name</h1>
+      </div>
+      <div class="data-box">
+        <div class="data-1">
+          <h1>Temperature <span id="temp"></span></h1>
+          <h1>feels like <span id="feel-temp"></span></h1>
+          <h2>Humidity <span id="humidity"></span></h2>
+        </div>
+        <div class="data-2">
+          <h2>Speed <span id="speed"></span></h2>
+          <h2 id="weather">Weather</h2>
+        </div>
+      </div>
+    </section>
+
+    <script src="weatherApp.js"></script>
+  </body>
+</html>
