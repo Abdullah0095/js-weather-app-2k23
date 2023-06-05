@@ -6,11 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
     <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        background-image: url("/bg-image.jpg");
+      }
+
+      section {
+        width: fit-content;
+        background: rgb(138, 134, 134);
+        padding: 50px;
+        border: 1px solid gray;
+        border-radius: 20px;
+        opacity: 0.5;
+        margin: auto;
+        margin-top: 8rem;
+      }
+      .data-box {
+        display: flex;
+      }
+      .data-1 {
+        margin: 10px;
+      }
+      .data-2 {
+        margin: 10px;
+      }
+      .search-box {
+        text-align: center;
+      }
+
+      .search-box input {
+        height: 30px;
+        border-radius: 10px;
+        border: none;
+        text-align: center;
+        font-size: larger;
+        font-weight: bold;
+      }
+      .search-box button {
+        background: black;
+        color: white;
+        height: 40px;
+        border: none;
+        border-radius: 12px;
+        padding: 10px;
+        font-size: medium;
+      }
+    </style>
   </head>
   <body>
     <section>
       <div class="search-box">
-        <input id="input" placeholder="search the city name ..." type="text" spellcheck="false" />
+        <input
+          id="input"
+          placeholder="search the city name ..."
+          type="text"
+          spellcheck="false"
+        />
         <button id="button">Search</button>
         <h1 id="name">name</h1>
       </div>
@@ -27,6 +78,34 @@
       </div>
     </section>
 
-    <script src="weatherApp.js"></script>
+    <script>
+      const searchInput = document.getElementById("input");
+      const searchButton = document.getElementById("button");
+
+      searchButton.addEventListener("click", () => {
+        fetch(
+          "https://api.openweathermap.org/data/2.5/weather?units=metric&appid=b47455588de3ea0e8f6634db25933dba&q=" +
+            searchInput.value
+        )
+          .then((res) => res.json())
+          .then((data) => loadData(data));
+
+        // fetch('https://api.lyrics.ovh/suggest/'+input.value+'')
+      });
+
+      function loadData(user) {
+        console.log(user);
+        document.querySelector("#name").innerHTML = user.name;
+        document.querySelector("#temp").innerHTML =
+          Math.round(user.main.temp) + " °C";
+        document.querySelector("#feel-temp").innerHTML =
+          Math.round(user.main.feels_like) + " °C";
+        document.querySelector("#humidity").innerHTML =
+          user.main.humidity + " %";
+        document.querySelector("#speed").innerHTML = user.wind.speed + " km/h";
+        document.querySelector("#weather").innerHTML =
+          user.weather[0].description;
+      }
+    </script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-what
+
 const searchInput = document.getElementById("input");
 const searchButton = document.getElementById("button");
 
