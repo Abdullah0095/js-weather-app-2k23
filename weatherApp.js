@@ -18,4 +18,12 @@ function loadData(user){
     document.querySelector("#humidity").innerHTML = user.main.humidity + " %";
     document.querySelector("#speed").innerHTML = user.wind.speed + " km/h";
     document.querySelector("#weather").innerHTML = user.weather[0].description;
+
+    // if(Math.round(user.main.temp) > 30){
+    //     document.querySelector("#test").innerHTML = "it is too much hot"
+    // }
+    // else{
+    //     document.querySelector("#test").innerHTML = "it is okay now"
+    // }
 }
+
